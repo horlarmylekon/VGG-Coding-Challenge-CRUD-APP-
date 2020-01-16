@@ -58,7 +58,7 @@ class ProjectList extends Component {
                 <AppNavbar/>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="/groups/new">Add Project</Button>
+                        <Button color="success" tag={Link} to="/projects/new">Add Project</Button>
                     </div>
                     <h3>My CRUD APP</h3>
                     <Table className="mt-4">
