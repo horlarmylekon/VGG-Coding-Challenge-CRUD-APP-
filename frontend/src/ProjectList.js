@@ -7,7 +7,7 @@ class ProjectList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {groups: [], isLoading: true};
+        this.state = {projects: [], isLoading: true};
         this.remove = this.remove.bind(this);
     }
 
@@ -16,7 +16,7 @@ class ProjectList extends Component {
 
         fetch('api/v1/projects')
             .then(response => response.json())
-            .then(data => this.setState({groups: data, isLoading: false}));
+            .then(data => this.setState({projects: data, isLoading: false}));
     }
 
     async remove(id) {
@@ -27,27 +27,27 @@ class ProjectList extends Component {
                 'Content-Type': 'application/json'
             }
         }).then(() => {
-            let updatedProjects = [...this.state.groups].filter(i => i.id !== id);
-            this.setState({groups: updatedProjects});
+            let updatedProjects = [...this.state.projects].filter(i => i.id !== id);
+            this.setState({projects: updatedProjects});
         });
     }
 
     render() {
-        const {groups, isLoading} = this.state;
+        const {projects, isLoading} = this.state;
 
         if (isLoading) {
             return <p>Loading...</p>;
         }
 
-        const projectList = groups.map(group => {
+        const projectList = projects.map(project => {
             return <tr key={project.id}>
                 <td style={{whiteSpace: 'nowrap'}}>{project.name}</td>
                 <td>{project.description}</td>
 
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"/projects/" + group.id}>Edit</Button>
-                        <Button size="sm" color="danger" onClick={() => this.remove(group.id)}>Delete</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"/projects/" + project.id}>Edit</Button>
+                        <Button size="sm" color="danger" onClick={() => this.remove(project.id)}>Delete</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -79,4 +79,4 @@ class ProjectList extends Component {
     }
 }
 
-export default GroupList;
+export default ProjectList;
