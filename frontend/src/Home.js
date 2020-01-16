@@ -10,7 +10,7 @@ class Home extends Component {
             <div>
                 <AppNavbar/>
                 <Container fluid>
-                    <Button color="link"><Link to="/groups">Manage Projects and Actions</Link></Button>
+                    <Button color="link"><Link to="/projects">Manage Projects and Actions</Link></Button>
                 </Container>
             </div>
         );
