@@ -19,14 +19,14 @@ public class ProjectRestController {
     @Autowired
     private ProjectService projectService;
 
-    @GetMapping
+    @GetMapping("/projects")
     public ResponseEntity<List<Project>> getAllProjects() {
         List<Project> list = projectService.getAllProjects();
 
         return new ResponseEntity<List<Project>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("project/{id}")
     public ResponseEntity<Project> getProjectById(@PathVariable("id") Long id)
             throws RecordNotFoundException {
         Project entity = projectService.getProjectById(id);
@@ -34,14 +34,14 @@ public class ProjectRestController {
         return new ResponseEntity<Project>(entity, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/project/update")
     public ResponseEntity<Project> createOrUpdateProject(Project project)
             throws RecordNotFoundException {
         Project updated = projectService.createOrUpdateProject(project);
         return new ResponseEntity<Project>(updated, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/project/{id}")
     public HttpStatus deleteProjectById(@PathVariable("id") Long id)
             throws RecordNotFoundException {
         projectService.deleteProjectById(id);

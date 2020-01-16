@@ -34,7 +34,7 @@ public class ProjectService {
         if(projectOptional.isPresent()) {
             return projectOptional.get();
         } else {
-            throw new RecordNotFoundException("No employee record exist for given id");
+            throw new RecordNotFoundException("No project record exist for given id");
         }
     }
 
@@ -45,10 +45,10 @@ public class ProjectService {
         if(projectOptional.isPresent())
         {
             Project newProject = new Project();
-            newProject.setName(projectOptional.getName());
-            newProject.setDescription(projectOptional.getDescription());
-            newProject.setActions(projectOptional.setActions());
-            newProject.setCompleted(projectOptional.getCompleted);
+//            newProject.setName(projectOptional.getName());
+//            newProject.setDescription(projectOptional.getDescription());
+//            newProject.setActions(projectOptional.setActions());
+//            newProject.setCompleted(projectOptional.getCompleted);
 
             newProject = projectRepository.save(newProject);
 
@@ -68,7 +68,7 @@ public class ProjectService {
         {
             projectRepository.deleteById(id);
         } else {
-            throw new RecordNotFoundException("No employee record exist for given id");
+            throw new RecordNotFoundException("No project record exist for given id");
         }
     }
 }
