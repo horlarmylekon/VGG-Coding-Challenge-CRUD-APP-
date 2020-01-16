@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Action {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "projectId", referencedColumnName = "id")
